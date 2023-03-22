@@ -1,0 +1,8 @@
+static files and assets are all stored under the top level public directory and the files inside public can be reference from the root applcation
+
+Image Component & Optimization
+- next/image is an extension of <img> 
+- support resizing, optimizing, and serving images in formats like WebP when the browser supports inter
+- the automatic image optimization works with any image source even when the image is hosted by an external source like a CMS
+- optimizes images on-demand when user requests them, this means the build time will not be increased whether its serving 10 or 10 million images
+- images are lazy loaded 
