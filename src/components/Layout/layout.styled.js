@@ -1,6 +1,7 @@
 import styled from "styled-components";
+// import Layout from "@/components/Layout/layout";
 
-const Layout = styled.div((props) => {
+export const LayoutWrapper = styled.div((props) => {
   const color = "white";
   const size = 20;
   return `
