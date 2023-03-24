@@ -1,5 +1,6 @@
 import axios from "axios";
 import styled from "styled-components";
+import { v4 as uuidv4 } from "uuid";
 
 const NewsWrapper = styled.div`
   display: flex;
@@ -12,10 +13,11 @@ const newsUrl = `https://newsdata.io/api/1/news?apikey=${apiKey}&q=social`;
 const News = (props) => {
   return (
     <NewsWrapper>
-      {props.results.map((info) => {
-        return <div key={info.source_id}>{info.title}</div>;
-      })}
-      {/* {console.log(props)} */}
+      {/* {props.results.map((info) => {
+        console.log(info);
+        return <div key={uuidv4()}>{info.title}</div>;
+      })} */}
+      <div>{props.fact}</div>
     </NewsWrapper>
   );
 };
@@ -45,9 +47,10 @@ export default News;
 // use only if you need to pre-render every page where data must be fetched at request time when the data is not known ahead of time
 export async function getServerSideProps(context) {
   try {
-    const { data } = await axios.get(newsUrl);
+    const { data } = await axios.get("https://catfact.ninja/fact");
+    // const { data } = await axios.get(newsUrl);
     let newData = data;
-    newData.results = data.results.slice(0, 5);
+    // newData.results = data.results.slice(0, 5);
     // console.log(newData);
     return {
       props: newData,
